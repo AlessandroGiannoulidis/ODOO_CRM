@@ -1,61 +1,25 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Redirecting…</title>
-
-
-<!-- PWA manifest -->
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#0a58ca">
-
-
-<!-- Fallback redirect for very old browsers -->
-<style>
-html,body{height:100%;margin:0;display:flex;align-items:center;justify-content:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,\"Helvetica Neue\",Arial}
-.msg{color:#444;text-align:center;font-size:1.1rem;margin-bottom:20px}
-button{padding:12px 22px;font-size:1rem;border:none;border-radius:8px;background:#0a58ca;color:white;cursor:pointer}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRM</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" href="icon-192.png" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
 </head>
-<body>
-<div class="msg">Clicca per aprire il CRM:</div>
-<button onclick="window.location.href='https://siaksistemi.com/odoo/crm'">Vai al CRM</button>
-
-
-<script>
-if ('serviceWorker' in navigator) {
-navigator.serviceWorker.register('/sw.js').catch(()=>{});
-}
-</script>
-</body>
-</html>{color:#444;text-align:center;font-size:1.1rem}
-</style>
-</head>
-<body>
-<div class="msg">Reindirizzamento in corso… se non vieni trasferito, apri <a href="https://siaksistemi.com/odoo/crm">https://siaksistemi.com/odoo/crm</a>.</div>
-
-
-<script>
-(function(){
-const target = 'https://siaksistemi.com/odoo/crm';
-
-
-// Registra il service worker (se supportato) prima del redirect.
-// Anche se la registrazione è asincrona, usiamo finally per fare il redirect
-// una volta che la chiamata è stata completata (o fallita).
-if ('serviceWorker' in navigator) {
-navigator.serviceWorker.register('/sw.js')
-.catch(()=>{/* ignore registration errors */})
-.finally(()=>{
-// location.replace evita di lasciare la pagina nel history
-setTimeout(()=>location.replace(target), 3000);
-});
-} else {
-// Se non c'è supporto per SW, usa comunque replace per redirect immediato
-location.replace(target);
-}
-})();
-</script>
+<body style="text-align: center; padding: 2rem; font-family: sans-serif;">
+  <h1>SIAK Sistemi</h1>
+  <p>Odoo</p>
+  <a href="https://app.crmincloud.it/today?tour" 
+     target="_blank" 
+     style="display: inline-block; padding: 1rem 2rem; background-color: #007BFF; color: white; border-radius: 8px; text-decoration: none; font-size: 1.2rem;">
+    Apri CRM
+  </a>
 </body>
 </html>
